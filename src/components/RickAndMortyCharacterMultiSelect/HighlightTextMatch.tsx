@@ -11,7 +11,7 @@ export const HighlightTextMatch = ({
   defaultStyle?: CSSProperties;
   highlightStyle?: CSSProperties;
 }) => {
-  if (!query) return <>{text}</>;
+  if (!query) return <span style={defaultStyle}>{text}</span>;
   return (
     <>
       {text.split(new RegExp(`(${query})`, 'gi')).map((part, index) => (

@@ -203,12 +203,12 @@ const RickAndMortyCharacterMultiSelect = (
           style={{ width: '24px', height: '24px', marginRight: '10px' }}
           alt={data.name}
         />
-        <div style={{ textAlign: 'left' }}>
-          <span style={{ color: '#475569', fontWeight: 600 }}>
+        <div style={{ textAlign: 'left', fontSize: '18px' }}>
+          <span style={{ color: '#475569' }}>
             <HighlightTextMatch
               text={data.name}
               query={inputValue}
-              defaultStyle={{ fontWeight: 600 }}
+              defaultStyle={{ fontWeight: 500 }}
               highlightStyle={{ fontWeight: 800 }}
             />
           </span>
