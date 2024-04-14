@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { components, DropdownIndicatorProps, GroupBase } from 'react-select';
-import { RickAndMortyCharacter } from 'types';
+
+import { RickAndMortyCharacter } from './types';
 
 export const CustomDropdownIndicator = (
   props: DropdownIndicatorProps<

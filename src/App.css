@@ -7,3 +7,39 @@
     max-width: 500px;
     margin: auto;
 }
+
+.error-container {
+    padding: 20px;
+    border-radius: 5px;
+    background: #ffdede;
+    color: #611a1a;
+    text-align: center;
+    margin: 20px 0;
+    border: 1px solid #ffa3a3;
+}
+
+.error-message-title {
+    margin: 0 0 10px 0;
+    font-weight: bold;
+}
+
+.error-message {
+    margin: 0 0 20px 0;
+    color: #d04545;
+}
+
+.retry-button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background: #ff6161;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+.retry-button:hover {
+    background: #ff8181;
+}

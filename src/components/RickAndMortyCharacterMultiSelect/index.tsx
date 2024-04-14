@@ -1,28 +1,30 @@
 import axios from 'axios';
-import { CustomDropdownIndicator } from 'components/RickAndMortyCharacterMultiSelect/CustomDropdownIndicator';
-import { CustomMultiValueRemove } from 'components/RickAndMortyCharacterMultiSelect/CustomMultiValueRemove';
-import { HighlightTextMatch } from 'components/RickAndMortyCharacterMultiSelect/HighlightTextMatch';
-import styles, {
-  fontSize,
-} from 'components/RickAndMortyCharacterMultiSelect/styles';
 import React, { useState } from 'react';
 import { components, GroupBase, OptionProps } from 'react-select';
 import { AsyncPaginate } from 'react-select-async-paginate';
+
+import { CustomDropdownIndicator } from './CustomDropdownIndicator';
+import { CustomMultiValueRemove } from './CustomMultiValueRemove';
+import { HighlightTextMatch } from './HighlightTextMatch';
+import styles, { fontSize } from './styles';
 import {
   RickAndMortyApiResponse,
   RickAndMortyAsyncPaginateProps,
   RickAndMortyCharacter,
-} from 'types';
+  RickAndMortyCharacterMultiSelectProps,
+} from './types';
 
 const RickAndMortyAsyncPaginate: React.FC<RickAndMortyAsyncPaginateProps> = (
   props,
 ) => {
   return <AsyncPaginate {...props} />;
 };
-const RickAndMortyCharacterMultiSelect = (
-  props: Partial<RickAndMortyAsyncPaginateProps>,
-) => {
+const RickAndMortyCharacterMultiSelect = ({
+  errorComponent,
+  ...props
+}: RickAndMortyCharacterMultiSelectProps) => {
   const [inputValue, setInputValue] = useState('');
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const loadOptions: RickAndMortyAsyncPaginateProps['loadOptions'] = async (
     searchQuery,
@@ -40,6 +42,7 @@ const RickAndMortyCharacterMultiSelect = (
           },
         },
       );
+      setErrorMessage(null);
       return {
         options: response.data.results,
         hasMore: response.data.info.next != null,
@@ -55,6 +58,8 @@ const RickAndMortyCharacterMultiSelect = (
           additional,
         };
       }
+      setErrorMessage(String(e?.message || e));
+      console.error(e);
       throw e;
     }
   };
@@ -103,6 +108,13 @@ const RickAndMortyCharacterMultiSelect = (
       </components.Option>
     );
   };
+
+  if (errorMessage && errorComponent) {
+    return errorComponent({
+      retryRequest: () => setErrorMessage(null),
+      errorMessage,
+    });
+  }
 
   return (
     <RickAndMortyAsyncPaginate

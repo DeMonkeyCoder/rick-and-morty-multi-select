@@ -38,3 +38,11 @@ export type RickAndMortyAsyncPaginateProps = AsyncPaginateProps<
   },
   boolean
 >;
+export type RickAndMortyCharacterMultiSelectErrorComponentProps = {
+  errorMessage: string;
+  retryRequest: () => void;
+};
+export type RickAndMortyCharacterMultiSelectProps =
+  Partial<RickAndMortyAsyncPaginateProps> & {
+    errorComponent?: React.FC<RickAndMortyCharacterMultiSelectErrorComponentProps>;
+  };

@@ -1,6 +1,7 @@
 import React from 'react';
 import { components, GroupBase, MultiValueRemoveProps } from 'react-select';
-import { RickAndMortyCharacter } from 'types';
+
+import { RickAndMortyCharacter } from './types';
 
 export const CustomMultiValueRemove = (
   props: MultiValueRemoveProps<

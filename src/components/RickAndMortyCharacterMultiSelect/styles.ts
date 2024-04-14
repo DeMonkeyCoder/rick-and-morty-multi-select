@@ -1,4 +1,4 @@
-import { RickAndMortyAsyncPaginateProps } from 'types';
+import { RickAndMortyAsyncPaginateProps } from './types';
 
 // Style constants
 export const colors = {
